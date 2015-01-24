@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
 
   def create_location
     street, city, country = self.address.split(', ')
-    location = Location.find_or_create_by(street: street, city: city, country: country)
-    save
+    self.location = Location.find_or_create_by(street: street, city: city, country: country)
+    self.save
   end
 end
