@@ -23,12 +23,7 @@ class User < ActiveRecord::Base
   
   validates_presence_of :address
 
-  after_save :create_location
-
-  def create_location
-    street, city, country = self.address.split(', ')
-    location.find_or_create_by(street: street, city: city, country: country)
-  end
+  after_create :create_location
 
   def self.paged(page_number)
     order(admin: :desc, email: :asc).page page_number
@@ -55,5 +50,12 @@ class User < ActiveRecord::Base
 
   def self.users_count
     where("admin = ? AND locked = ?", false, false).count
+  end
+
+  private
+
+  def create_location
+    street, city, country = self.address.split(', ')
+    location.find_or_create_by(street: street, city: city, country: country)
   end
 end
