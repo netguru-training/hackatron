@@ -1,5 +1,5 @@
 %h1 Create Event
-=form_for(@event) do |f|
+=form_for(@event||event) do |f|
   .form-group
     = f.label :title
     = f.text_field :title,class: 'form-control'

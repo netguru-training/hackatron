@@ -1,2 +1,6 @@
-%h1 Events
-=render @events
+%h1
+  Events
+  =link_to new_event_path do
+    %i.fa.fa-plus-circle
+%table.table
+  =render events

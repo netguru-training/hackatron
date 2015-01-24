@@ -23,6 +23,7 @@ gem 'font-awesome-sass', '4.2.2'
 gem 'bootstrap-sass', '3.3.1.0'
 
 gem 'responders'
+gem 'decent_exposure'
 gem 'geocoder'
 
 group :development, :test do
