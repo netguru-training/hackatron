@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :participations
   has_many :events, through: :participations
-  has_one :location
+  belongs_to :location
   # has_many :own_events, -> {where()}
 
   def own_events
@@ -56,6 +56,7 @@ class User < ActiveRecord::Base
 
   def create_location
     street, city, country = self.address.split(', ')
-    location.find_or_create_by(street: street, city: city, country: country)
+    location = Location.find_or_create_by(street: street, city: city, country: country)
+    save
   end
 end
