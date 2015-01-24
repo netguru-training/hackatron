@@ -13,7 +13,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    respond_with(current_user.events.create(event_params))
+    respond_with(current_user.own_events.create(event_params),location: -> {events_path})
   end
 
   private
