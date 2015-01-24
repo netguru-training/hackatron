@@ -188,6 +188,7 @@ DEPENDENCIES
   kaminari (= 0.16.1)
   pg
   rails (= 4.2.0)
+  responders
   sass-rails (= 5.0.0)
   spring (= 1.2.0)
   uglifier (= 2.6.0)
