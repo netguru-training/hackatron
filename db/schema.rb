@@ -29,7 +29,11 @@ ActiveRecord::Schema.define(version: 20150124151959) do
     t.datetime "updated_at",  null: false
     t.string   "title"
     t.text     "description"
+    t.integer  "location_id"
+    t.string   "address"
   end
+
+  add_index "events", ["location_id"], name: "index_events_on_location_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -95,4 +99,5 @@ ActiveRecord::Schema.define(version: 20150124151959) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "events", "locations"
 end

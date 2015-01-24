@@ -2,8 +2,12 @@
 =form_for(@event||event) do |f|
   .form-group
     = f.label :title
-    = f.text_field :title,class: 'form-control'
+    = f.text_field :title, class: 'form-control'
   .form-group
     = f.label :description
     = f.text_area :description, rows: "10", class: 'form-control'
+  .form-group
+    = f.label :address
+    = f.text_field :address, class: 'form-control'
+
   =f.submit 'Create',class: 'btn btn-primary'

@@ -2,18 +2,32 @@ class EventsController < ApplicationController
 
   before_filter :authenticate_user!, except: [:index]
 
-  respond_to :html
-
-  expose(:event)
+  expose(:event, attributes: :event_params)
   expose(:events)
 
   def create
-    respond_with(@event = current_user.own_events.create(event_params) ,location: -> {events_path})
+    event.creator = current_user
+    if event.save
+      redirect_to events_path
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    if current_user != event.creator
+      redirect_to :back
+      flash[:error] = "Can't remove #{event.creator.email}'s event"
+    else
+      event.destroy
+      flash[:notice] = "Event was removed"
+      redirect_to events_path
+    end
   end
 
   private
 
-  def  event_params
-    params.require(:event).permit(:title,:description)
+  def event_params
+    params.require(:event).permit(:title, :description, :address)
   end
 end

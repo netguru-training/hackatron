@@ -1,0 +1,11 @@
+%h1=event.title
+%p=event.description
+%p.pull-right=event.location
+%p.pull-right=event.address
+%h3
+  Participants
+  =link_to event_participations_path(event), method: :post do
+    %i.fa.fa-sign-in
+%ul
+  -event.participants.each do |user|
+    %li=user.email

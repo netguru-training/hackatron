@@ -5,7 +5,10 @@ class ApplicationController < ActionController::Base
   
   before_filter :configure_permitted_parameters, if: :devise_controller?
   before_filter :reject_locked!, if: :devise_controller?
-  
+
+  decent_configuration do
+    strategy DecentExposure::StrongParametersStrategy
+  end
 
   # Devise permitted params
   def configure_permitted_parameters
@@ -26,7 +29,7 @@ class ApplicationController < ActionController::Base
   
   # Redirects on successful sign in
   def after_sign_in_path_for(resource)
-    inside_path
+    root_path
   end
   
   # Auto-sign out locked users
