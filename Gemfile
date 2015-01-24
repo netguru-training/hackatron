@@ -9,6 +9,7 @@ gem 'coffee-rails', '4.1.0'
 gem 'jquery-rails', '4.0.2'
 gem 'bcrypt', '3.1.9'
 gem 'haml'
+gem 'html2haml'
 
 # Kaminari: https://github.com/amatsuda/kaminari
 gem 'kaminari', '0.16.1'
