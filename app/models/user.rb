@@ -8,22 +8,17 @@ class User < ActiveRecord::Base
   has_many :participations
   has_many :events, through: :participations
   belongs_to :location
-  # has_many :own_events, -> {where()}
+
+  paginates_per 100
+
+  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
+  validates_presence_of :address
+  
+  after_create :create_location
 
   def own_events
     Event.where(creator_id: self.id)
   end
-
-  # Pagination
-  paginates_per 100
-
-  # Validations
-  # :email
-  validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
-  
-  validates_presence_of :address
-
-  after_create :create_location
 
   def self.paged(page_number)
     order(admin: :desc, email: :asc).page page_number
