@@ -7,12 +7,8 @@ gem 'sass-rails', '5.0.0'
 gem 'uglifier', '2.6.0'
 gem 'coffee-rails', '4.1.0'
 gem 'jquery-rails', '4.0.2'
-gem 'turbolinks', '2.5.3'
-gem 'jbuilder', '2.2.6'
 gem 'bcrypt', '3.1.9'
-
-# Necessary for Windows OS (won't install on *nix systems)
-gem 'tzinfo-data', platforms: [:mingw, :mswin]
+gem 'haml'
 
 # Kaminari: https://github.com/amatsuda/kaminari
 gem 'kaminari', '0.16.1'
