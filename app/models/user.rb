@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :participations
   has_many :events, through: :participations
+  has_one :location
   # has_many :own_events, -> {where()}
 
   def own_events
@@ -20,13 +21,13 @@ class User < ActiveRecord::Base
   # :email
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   
-  validates_presence_of :street, :city, :country
+  validates_presence_of :address
 
-  geocoded_by :address
-  after_validation :geocode
+  after_save :create_location
 
-  def address
-    [street, city, country].compact.join(', ')
+  def create_location
+    street, city, country = self.address.split(', ')
+    location.find_or_create_by(street: street, city: city, country: country)
   end
 
   def self.paged(page_number)

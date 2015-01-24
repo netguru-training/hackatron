@@ -1,9 +1,9 @@
 class Location < ActiveRecord::Base
   belongs_to :event
+  belongs_to :user
 
   validates_presence_of :street, :city, :country
-
-  attr_accessible :address, :latitude, :longitude
+  
   geocoded_by :address
   after_validation :geocode
 
