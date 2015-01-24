@@ -5,4 +5,8 @@
  */
 @import "railsbricks_custom";
 
+/* Fix text in fields not visible */
+.form-control {
+  color: #333;
+}
 

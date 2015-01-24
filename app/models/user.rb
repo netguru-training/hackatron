@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,6 +13,15 @@ class User < ActiveRecord::Base
   # :email
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   
+  validates_presence_of :street, :city, :country
+
+  geocoded_by :address
+  after_validation :geocode
+
+  def address
+    [street, city, country].compact.join(', ')
+  end
+
   def self.paged(page_number)
     order(admin: :desc, email: :asc).page page_number
   end

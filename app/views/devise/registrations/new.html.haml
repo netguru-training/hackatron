@@ -1,5 +1,5 @@
 .row
-  .col-sm-6
+  .col-sm-8.col-sm-offset-1
     %h1 Sign up
     = form_for(resource, :as => resource_name,  |
       :url => registration_path(resource_name), |
@@ -20,6 +20,21 @@
           .col-sm-6
             = f.label :password_confirmation
             = f.password_field :password_confirmation, class: "form-control"
+      .form-group
+        .row
+          .col-sm-6
+            = f.label :street
+            = f.text_field :street, class: "form-control"
+      .form-group
+        .row
+          .col-sm-6
+            = f.label :city
+            = f.text_field :city, class: "form-control"
+      .form-group
+        .row
+          .col-sm-6
+            = f.label :country
+            = f.text_field :country, class: "form-control"
       .row
         .col-sm-6
           = f.submit "Sign up", class: "btn btn-primary"
