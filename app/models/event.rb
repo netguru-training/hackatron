@@ -5,7 +5,7 @@ class Event < ActiveRecord::Base
   belongs_to :location
   validates :title, :description, presence: true
 
-  after_create :create_location
+  after_save :set_location
 
 
   def owner?(user)
@@ -14,10 +14,8 @@ class Event < ActiveRecord::Base
 
   private
 
-  def create_location
+  def set_location
     street, city, country = self.address.split(', ')
-    location = Location.find_or_create_by(street: street, city: city, country: country)
-    save
+    update_column(:location_id, Location.find_or_create_by(street: street, city: city, country: country))
   end
-
 end

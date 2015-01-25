@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates_presence_of :address
   
-  after_create :create_location
+  after_save :set_location
 
   def own_events
     Event.where(creator_id: self.id)
@@ -49,9 +49,8 @@ class User < ActiveRecord::Base
 
   private
 
-  def create_location
+  def set_location
     street, city, country = self.address.split(', ')
-    self.location = Location.find_or_create_by(street: street, city: city, country: country)
-    save
+    update_column(:location_id, Location.find_or_create_by(street: street, city: city, country: country))
   end
 end
