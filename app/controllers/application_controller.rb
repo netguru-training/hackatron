@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
         :address,
         :first_name,
         :last_name,
+        :new_languages,
         language_ids: [])
     }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(
@@ -29,6 +30,7 @@ class ApplicationController < ActionController::Base
         :address,
         :first_name,
         :last_name,
+        :new_languages,
         language_ids: [])
     }
   end

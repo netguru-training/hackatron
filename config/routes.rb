@@ -6,7 +6,7 @@ Hackatron::Application.routes.draw do
   root "events#index"
   get "home", to: "pages#home", as: "home"
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
 
   namespace :admin do
     root "base#index"

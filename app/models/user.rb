@@ -22,6 +22,13 @@ class User < ActiveRecord::Base
     Event.where(creator_id: self.id)
   end
 
+  def add_new_languages(new_languages)
+    new_languages.split(%r{,\s*}).each do |new_language|
+      languages << Language.find_or_create_by(name: new_language)
+    end
+    save
+  end
+
   def self.paged(page_number)
     order(admin: :desc, email: :asc).page page_number
   end
@@ -52,7 +59,7 @@ class User < ActiveRecord::Base
   private
 
   def set_location
-    street, city, country = self.address.split(', ')
+    street, city, country = self.address.split(%r{,\s*})
     update_column(:location_id, Location.find_or_create_by(street: street, city: city, country: country))
   end
 end
