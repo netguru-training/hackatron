@@ -14,6 +14,17 @@ class ParticipationsController < ApplicationController
     redirect participation.event
   end
 
+  def approve
+    participation = Participation.find(params[:id])
+    if participation && participation.event.owner?(current_user)
+      participation.update(allowed: true)
+    else
+      flash[:error] = "Can't allow people to participate"
+    end
+
+    redirect_to event_path(participation.event)
+  end
+
   private
 
   def load_event

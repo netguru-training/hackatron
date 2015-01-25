@@ -4,6 +4,8 @@
   %td
     =event.creator.email
   %td
+    =event.participations.size
+  %td
     =link_to event_participations_path(event), method: :post do
       %i.fa.fa-sign-in
     - if event.owner?(current_user)

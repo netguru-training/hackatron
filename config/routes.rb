@@ -15,6 +15,10 @@ Hackatron::Application.routes.draw do
   end
 
   resources :events, shallow: true do
-    resources :participations, only: [:create, :destroy]
+    resources :participations, only: [:create, :destroy] do
+      member do
+        post 'approve'
+      end
+    end
   end
 end

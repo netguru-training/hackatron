@@ -1,11 +1,21 @@
 %h1=event.title
 %p=event.description
-%p.pull-right=event.location
-%p.pull-right=event.address
+- if event.location
+  .map
+    = image_tag "http://maps.google.com/maps/api/staticmap?size=700x400&sensor=false&zoom=16&markers=#{event.location.latitude}%2C#{event.location.longitude}"
+  =event.address
 %h3
   Participants
   =link_to event_participations_path(event), method: :post do
-    %i.fa.fa-sign-in
+    %i.fa.fa-user-plus
 %ul
-  -event.participants.each do |user|
-    %li=user.email
+  -event.participations.each do |p|
+    %li=p.participant.email
+    - if p.allowed
+      %i.fa.fa-check
+    - else
+      -if event.owner?(current_user)
+        = link_to  approve_participation_path(p) ,method: :post do
+          %i.fa.fa-check-square
+
+
