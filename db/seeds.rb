@@ -1,30 +1,36 @@
 # Generated with RailsBricks
 # Initial seed file to use with Devise User Model
 
+%w(Ruby Python Java C).each do |l|
+  Language.create(name: l)
+end
+
 # Temporary admin account
-u = User.new(
-    email: "admin@example.com",
-    password: "1234",
-    password_confirmation: "1234",
-    admin: true
+User.create(
+  email: "admin@hackatron.com",
+  password: "1234",
+  password_confirmation: "1234",
+  first_name: Faker::Name.first_name,
+  last_name: Faker::Name.last_name,
+  address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.country}",
+  languages: Language.all,
+  admin: true
 )
-u.skip_confirmation!
-u.save!
 
 
 
 # Test user accounts
 (1..50).each do |i|
-  u = User.new(
-      email: "user#{i}@example.com",
-      password: "1234",
-      password_confirmation: "1234"
+  User.create(
+    email: Faker::Internet.email,
+    password: "1234",
+    password_confirmation: "1234",
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.country}",
+    languages: Language.all.sample(rand(1..4)),
+    admin: false
   )
-  u.skip_confirmation!
-  u.save!
-
-  puts "#{i} test users created..." if (i % 5 == 0)
-
 end
   
 

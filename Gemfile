@@ -25,6 +25,7 @@ gem 'bootstrap-sass', '3.3.1.0'
 gem 'responders'
 gem 'decent_exposure'
 gem 'geocoder'
+gem 'ffaker'
 
 group :development, :test do
   gem 'byebug', '3.5.1'
