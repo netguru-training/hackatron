@@ -13,6 +13,4 @@
     = f.text_field :time, class: 'form-control datetimepicker'
 .form-group
   = f.label :language
-  = f.select(:language_id, Language.all.collect {|p| [ p.name, p.id ] },
-                                     {},
-                                     { class: "form-control" })
+  = f.collection_select(:language_id, Language.all, :id, :name, {}, prompt: false, class: "form-control")
