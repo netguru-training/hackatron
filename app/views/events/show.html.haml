@@ -1,4 +1,8 @@
-%h1=event.title
+%h1
+  =event.title
+  - if event.owner?(current_user)
+    =link_to edit_event_path(event) do
+      %i.fa.fa-pencil
 %p=event.description
 - if event.location
   .map

@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-
   before_filter :authenticate_user!, except: [:index]
 
   expose(:event, attributes: :event_params)
@@ -11,6 +10,14 @@ class EventsController < ApplicationController
       redirect_to events_path
     else
       render :new
+    end
+  end
+
+  def update
+    if event.save
+      redirect_to events_path
+    else
+      render :edit
     end
   end
 
@@ -28,6 +35,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :description, :address,:time)
+    params.require(:event).permit(:title, :description, :address, :time, :language_id)
   end
 end
