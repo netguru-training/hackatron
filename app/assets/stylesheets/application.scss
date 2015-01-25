@@ -5,9 +5,4 @@
  */
 @import "railsbricks_custom";
 @import "jquery.datetimepicker";
-
-/* Fix text in fields not visible */
-.form-control, form input {
-  color: #333;
-}
-
+@import "custom";
