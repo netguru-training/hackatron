@@ -1,5 +1,5 @@
-- title("Home Page")
-%h1
-  %i.fa.fa-home
-  Home Page
-  %small views/pages/home.html.erb
+=form_tag do
+  =text_field_tag :lang
+  =text_field_tag :distance,'5'
+  =text_field_tag :location,request.location.address
+  

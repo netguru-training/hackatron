@@ -1,6 +1,6 @@
 var ready = function () {
     console.log('test')
-    $('.datetimepicker').datetimepicker({mask:true});
+    $('.datetimepicker').datetimepicker({mask: true, inline: true});
 }
 
 

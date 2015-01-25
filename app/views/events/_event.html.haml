@@ -7,7 +7,7 @@
     =event.participations.size
   %td
     =link_to event_participations_path(event), method: :post do
-      %i.fa.fa-sign-in
+      %i.fa.fa-hand-o-right
     - if event.owner?(current_user)
       =link_to event_path(event), method: :delete do
         %i.fa.fa-trash-o

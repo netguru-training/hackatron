@@ -2,12 +2,12 @@
  * Overwritten by RailsBricks
  *
  *= require_self
- *= requre jquery,datetimepicker.css
  */
 @import "railsbricks_custom";
+@import "jquery.datetimepicker";
 
 /* Fix text in fields not visible */
-.form-control {
+.form-control, form input {
   color: #333;
 }
 
