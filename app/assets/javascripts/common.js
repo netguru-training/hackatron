@@ -1,5 +1,6 @@
-var ready = function() {
-	
+var ready = function () {
+    console.log('test')
+    $('.datetimepicker').datetimepicker({mask:true});
 }
 
 

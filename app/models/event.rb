@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   has_many :participations
   has_many :participants, class_name: 'User', through: :participations
   belongs_to :location
-  validates :title, :description, :creator_id, :location, presence: true
+  validates :title, :description, :creator_id, :address, :time, presence: true
 
   after_save :set_location
 
