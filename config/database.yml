@@ -5,6 +5,7 @@ development:
   adapter: postgresql 
   encoding: utf8 
   database: hackatron_development 
+  username: m
+  host: localhost
   pool: 5
   port: 5432
-  

@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :participations
   has_many :events, through: :participations
+  has_many :user_languages
+  has_many :languages, through: :user_languages
   belongs_to :location
 
   paginates_per 100

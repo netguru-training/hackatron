@@ -1,5 +1,6 @@
 class Language < ActiveRecord::Base
-  belongs_to :user
+  has_many :user_languages
+  has_many :users, through: :user_languages
 
   validates_presence_of :name
 end

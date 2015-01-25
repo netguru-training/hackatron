@@ -35,6 +35,13 @@
           .col-sm-6
             = f.label :address
             = f.text_field :address, class: "form-control"
+      .form-group
+        .row
+          .col-sm-6
+            = f.label :languages
+            = f.select(:language_ids, Language.all.collect {|p| [ p.name, p.id ] }, 
+                                           {}, 
+                                           { multiple: true, size: 5, class: "form-control" })
       .row
         .col-sm-6
           = f.submit "Sign up", class: "btn btn-primary"
