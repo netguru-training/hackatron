@@ -3,18 +3,6 @@
   Language.create(name: l)
 end
 
-locations = CSV.parse(File.read('db/locations.csv'), headers: false)
-locations.each do |location|
-  Event.create(
-    creator_id: rand(1..51),
-    title: Faker::Company.catch_phrase,
-    description: Faker::Company.catch_phrase,
-    address: location.join(', '),
-    time: (5..300).to_a.sample.days.from_now,
-    language:Language.find(rand(1..4))
-  )
-end
-
 # Temporary admin account
 User.create(
   email: "admin@hackatron.com",
@@ -38,5 +26,17 @@ User.create(
     address: "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.country}",
     languages: Language.all.sample(rand(1..4)),
     admin: false
+  )
+end
+
+locations = CSV.parse(File.read('db/locations.csv'), headers: false)
+locations.each do |location|
+  Event.create(
+    creator: User.all.sample,
+    title: Faker::Company.catch_phrase,
+    description: Faker::Company.catch_phrase,
+    address: location.join(', '),
+    time: (5..300).to_a.sample.days.from_now,
+    language: Language.sample
   )
 end
