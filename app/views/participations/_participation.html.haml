@@ -2,6 +2,10 @@
   %td
     =link_to participation.event.title, event_path(participation.event)
   %td
+    =participation.event.location.address
+  %td
+    =participation.event.time.to_formatted_s(:long)
+  %td
     -if participation.allowed
       %i.fa.fa-check
     -else

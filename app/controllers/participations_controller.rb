@@ -5,6 +5,7 @@ class ParticipationsController < ApplicationController
     event = load_event
     unless event.participants.include? current_user
       event.participants << current_user
+      flash[:notice] = 'You added as participant, wait for the approval before attending'
     end
     redirect_to event
   end
