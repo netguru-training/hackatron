@@ -16,6 +16,16 @@
             %p
               Currently waiting confirmation for: #{resource.unconfirmed_email}
       .form-group
+        = f.label :first_name
+        .row
+          .col-sm-6
+            = f.text_field :first_name, class: "form-control"
+      .form-group
+        = f.label :last_name
+        .row
+          .col-sm-6
+            = f.text_field :last_name, class: "form-control"
+      .form-group
         = f.label :password
         %i
           %small (leave blank if you don't want to change it)
@@ -38,7 +48,7 @@
         .row
           .col-sm-6
             = f.label :address
-            = f.password_field :address, class: "form-control"
+            = f.text_field :address, class: "form-control"
       .row
         .col-sm-6
           = f.submit "Update", class: "btn btn-primary"

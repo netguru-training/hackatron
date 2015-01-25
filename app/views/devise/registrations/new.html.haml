@@ -6,6 +6,16 @@
       :html => { :role => "form" }) do |f|      |
       = devise_error_messages!
       .form-group
+        = f.label :first_name
+        .row
+          .col-sm-6
+            = f.text_field :first_name, class: "form-control"
+      .form-group
+        = f.label :last_name
+        .row
+          .col-sm-6
+            = f.text_field :last_name, class: "form-control"
+      .form-group
         = f.label :email
         .row
           .col-sm-6
