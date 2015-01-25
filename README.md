@@ -1,6 +1,6 @@
 # Hackatron
 
-Always wanted to meet with fellow coders and engage in heated debates on which editor is *the best* ? Oh, not too many devs in the city you live in, you say? And you're an introvert too? Cool, dawg. Me too!
+Always wanted to meet with fellow coders and engage in heated debates on which editor is **the best**? Oh, not too many devs in the city you live in, you say? And you're an introvert too? Cool, dawg. Me too!
 
 ##*ENTER HACKATRON!!!*
 
