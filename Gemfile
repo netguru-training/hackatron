@@ -33,11 +33,15 @@ group :development, :test do
 
   # Figaro: https://github.com/laserlemon/figaro
   gem 'figaro', '1.0.0'
-  
+
   # Spring: https://github.com/rails/spring
   gem 'spring', '1.2.0'
 end
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller', :platforms => [:mri_21]
+end
 # PostgreSQL
 gem 'pg'
 

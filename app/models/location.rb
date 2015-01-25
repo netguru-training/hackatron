@@ -1,5 +1,5 @@
 class Location < ActiveRecord::Base
-  belongs_to :event
+  has_many :events
   has_many :users
 
   validates_presence_of :address

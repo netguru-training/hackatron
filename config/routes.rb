@@ -4,7 +4,7 @@ Hackatron::Application.routes.draw do
   get 'participations/destroy'
 
   root "events#index"
-  get "home", to: "pages#home", as: "home"
+  match "home", to: "pages#home", as: "home", via: [:get,:post]
 
   devise_for :users, controllers: { registrations: "registrations" }
 

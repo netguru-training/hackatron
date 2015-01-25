@@ -1,6 +1,7 @@
 %tr
   %td
     =link_to event.title, event_path(event)
+    ="(#{event.language.name})" if event.language
   %td
     =event.creator.name
   %td

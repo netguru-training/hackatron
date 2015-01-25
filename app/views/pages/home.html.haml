@@ -1,5 +1,11 @@
 =form_tag do
-  =text_field_tag :lang
-  =text_field_tag :distance,'5'
-  =text_field_tag :location,request.location.address
-  
+  =select_tag :language_id, options_from_collection_for_select(Language.all, "id", "name",params[:language_id]), class:'form-control'
+  =text_field_tag :distance, params[:distance] || '5',class:'form-control'
+  =text_field_tag :address,params[:address] || request.location.address, class:'form-control'
+  =submit_tag 'Search'
+
+
+-if @events
+  %ul
+  -@events.each  do |event|
+    %li=render event
