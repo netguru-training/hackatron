@@ -1,11 +1,17 @@
-=form_for(@search_form,url:home_path) do |f|
-  =f.collection_select(:language_id, Language.all, :id, :name, {include_blank:true}, prompt: false, class: "form-control", include_blank:true)
-  =f.text_field :radius, class:'form-control'
-  =f.text_field :address, class:'form-control'
-  =submit_tag 'Search'
+.row
+  %h1.hackatron--center Hack-a-tron!
 
+.row
+  .search-form.col-sm-6.col-sm-offset-3
+    =form_for(@search_form, url:home_path) do |f|
+      =f.collection_select(:language_id, Language.all, :id, :name, { include_blank: true }, prompt: false, class: "form-control select_lang", include_blank:true)
+      =f.text_field :radius, class:'form-control radius'
+      =f.text_field :address, class:'form-control address'
+      =submit_tag 'Search', class: 'btn btn-primary'
 
--if @events
-  %ul
-  -@events.each  do |event|
-    %li=render event
+-if @events.present?
+  .row
+    .events.col-sm-10.col-sm-offset-1
+      %table.table
+        -@events.each do |event|
+          =render event
