@@ -5,7 +5,6 @@ end
 
 locations = CSV.parse(File.read('db/locations.csv'), headers: false)
 locations.each do |location|
-  #byebug
   Event.create(
     creator_id: rand(1..51),
     title: Faker::Company.catch_phrase,
