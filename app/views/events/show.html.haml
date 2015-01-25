@@ -1,5 +1,7 @@
 %h1
   =event.title
+  %span.badge
+    =event.language.name if event.language
   - if event.owner?(current_user)
     =link_to edit_event_path(event) do
       %i.fa.fa-pencil
@@ -13,13 +15,16 @@
   =link_to event_participations_path(event), method: :post do
     %i.fa.fa-user-plus
 %ul
+  -if event.participations.empty?
+    No one desire to participate yet
   -event.participations.each do |p|
-    %li=p.participant.email
-    - if p.allowed
-      %i.fa.fa-check
-    - else
-      -if event.owner?(current_user)
-        = link_to  approve_participation_path(p) ,method: :post do
-          %i.fa.fa-check-square
+    %li
+      =p.participant.name
+      - if p.allowed
+        %i.fa.fa-check
+      - else
+        -if event.owner?(current_user)
+          = link_to  approve_participation_path(p) ,method: :post do
+            %i.fa.fa-check-square
 
 

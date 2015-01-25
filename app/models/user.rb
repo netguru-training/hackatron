@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
     where("admin = ? AND locked = ?", false, false).count
   end
 
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
+
   private
 
   def set_location
