@@ -1,25 +1,27 @@
-# README
+# Hackatron
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Always wanted to meet with fellow coders and engage in heated debates on which editor is **the best**? Oh, not too many devs in the city you live in, you say? And you're an introvert too? Cool, dawg. Me too!
 
-Things you may want to cover:
+##*ENTER HACKATRON!!!*
 
-* Ruby version
+App created for folks much like yourself. And for cats. But mostly for coders. It greatly facilites the process of creating a dev community, allowing devs (and cats!) to mingle, setup live pair programming sessions, share knowledge and engage in pointless debates and flame wars which we all love so much (vim vs. emacs)!
 
-* System dependencies
+# Setup
+Nothing out of ordinary here, good ol' `bundle install` followed by `rake db:setup` will set you straight on the path to new, social you!
 
-* Configuration
+# Testimonials
 
-* Database creation
+> Our annual revenue skyrocketed by 311% within 1 month of using HACKATRON!
+@GoogleCompany
 
-* Database initialization
+> My laundry is an order of magnitude cleaner, since I've started using Hackatron!!!
+@Jessica
 
-* How to run the test suite
+> Too bad I didn't invest in it when I had the chance! 
+@WarrenBuffet11
 
-* Services (job queues, cache servers, search engines, etc.)
+> Da BOMB!
+@Jay-Z
 
-* Deployment instructions
-
-* ...
-
+> 'Tis one cool app. I use it daily.
+@Aristotle

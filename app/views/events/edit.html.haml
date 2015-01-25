@@ -1,0 +1,4 @@
+%h1 Create Event
+=form_for(event,action:'update') do |f|
+  =render partial: 'form', locals:{f:f}
+  =f.submit 'Update',class: 'btn btn-primary'

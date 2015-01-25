@@ -1,8 +1,7 @@
 var ready = function () {
     console.log('test')
-    $('.datetimepicker').datetimepicker({mask: true, inline: true});
+    $('.datetimepicker').datetimepicker({format:'Y-m-d H:i:s',mask: true});
 }
-
 
 $(document).ready(ready);
 $(document).on('page:load', ready);

@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   validates_format_of :email, with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates_presence_of :address
-  
+
   after_save :set_location
 
   def own_events
@@ -56,10 +56,13 @@ class User < ActiveRecord::Base
     where("admin = ? AND locked = ?", false, false).count
   end
 
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
+
   private
 
   def set_location
-    street, city, country = self.address.split(%r{,\s*})
-    update_column(:location_id, Location.find_or_create_by(street: street, city: city, country: country))
+    update_column(:location_id, Location.find_or_create_by(address: self.address))
   end
 end

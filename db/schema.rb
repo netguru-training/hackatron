@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150125084042) do
+ActiveRecord::Schema.define(version: 20150125113950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +31,10 @@ ActiveRecord::Schema.define(version: 20150125084042) do
     t.text     "description"
     t.integer  "location_id"
     t.string   "address"
+    t.integer  "language_id"
   end
 
+  add_index "events", ["language_id"], name: "index_events_on_language_id", using: :btree
   add_index "events", ["location_id"], name: "index_events_on_location_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -57,11 +59,9 @@ ActiveRecord::Schema.define(version: 20150125084042) do
   create_table "locations", force: :cascade do |t|
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "street"
-    t.string   "city"
-    t.string   "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "address"
   end
 
   create_table "participations", force: :cascade do |t|
@@ -111,5 +111,6 @@ ActiveRecord::Schema.define(version: 20150125084042) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "events", "languages"
   add_foreign_key "events", "locations"
 end
