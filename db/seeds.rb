@@ -1,8 +1,19 @@
-# Generated with RailsBricks
-# Initial seed file to use with Devise User Model
-
+# Predefinied languages
 %w(Ruby Python Java C).each do |l|
   Language.create(name: l)
+end
+
+locations = CSV.parse(File.read('db/locations.csv'), headers: false)
+locations.each do |location|
+  #byebug
+  Event.create(
+    creator_id: rand(1..51),
+    title: Faker::Company.catch_phrase,
+    description: Faker::Company.catch_phrase,
+    address: location.join(', '),
+    time: (5..300).to_a.sample.days.from_now,
+    language:Language.find(rand(1..4))
+  )
 end
 
 # Temporary admin account
@@ -17,10 +28,8 @@ User.create(
   admin: true
 )
 
-
-
 # Test user accounts
-(1..50).each do |i|
+(1..50).each do
   User.create(
     email: Faker::Internet.email,
     password: "1234",
@@ -32,5 +41,3 @@ User.create(
     admin: false
   )
 end
-  
-
