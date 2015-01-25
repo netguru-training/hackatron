@@ -12,14 +12,14 @@ class ApplicationController < ActionController::Base
 
   # Devise permitted params
   def configure_permitted_parameters
-<<<<<<< Updated upstream
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(
         :email,
         :password,
         :password_confirmation,
         :address,
         :first_name,
-        :last_name)
+        :last_name,
+        language_ids: [])
     }
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(
         :email,
@@ -28,24 +28,8 @@ class ApplicationController < ActionController::Base
         :current_password,
         :address,
         :first_name,
-        :last_name)
-=======
-    devise_parameter_sanitizer.for(:sign_up) { |u| 
-      u.permit(
-      :email, 
-      :password, 
-      :password_confirmation,
-      :address,
-      language_ids: []) 
-    }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(
-      :email, 
-      :password, 
-      :password_confirmation,
-      :current_password,
-      :address,
-      :language_ids) 
->>>>>>> Stashed changes
+        :last_name,
+        language_ids: [])
     }
   end
 
