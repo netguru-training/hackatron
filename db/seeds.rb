@@ -37,6 +37,6 @@ locations.each do |location|
     description: Faker::Company.catch_phrase,
     address: location.join(', '),
     time: (5..300).to_a.sample.days.from_now,
-    language: Language.sample
+    language: Language.all.sample
   )
 end
