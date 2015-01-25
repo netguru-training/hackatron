@@ -1,8 +1,14 @@
 class EventsController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:show]
 
   expose(:event, attributes: :event_params)
   expose(:events)
+
+  def index
+    @events = current_user.own_events
+    @participations = current_user.participations
+    respond_with(@events, @participations)
+  end
 
   def create
     event.creator = current_user

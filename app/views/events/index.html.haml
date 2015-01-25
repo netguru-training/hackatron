@@ -1,8 +1,13 @@
 %h1
-  Events
-  =request.location.address
+  My Events
 
   =link_to new_event_path do
     %i.fa.fa-plus-circle
 %table.table
-  =render events
+  =render @events
+
+%h1
+  My Participations
+
+%table.table
+  =render @participations

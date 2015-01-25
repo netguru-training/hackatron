@@ -1,0 +1,8 @@
+%tr
+  %td
+    =link_to participation.event.title, event_path(participation.event)
+  %td
+    -if participation.allowed
+      %i.fa.fa-check
+    -else
+      %i.fa.fa-close
