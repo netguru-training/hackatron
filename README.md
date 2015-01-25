@@ -8,3 +8,20 @@ App created for folks much like yourself. And for cats. But mostly coders. It gr
 
 # Setup
 Nothing out of ordinary here, good ol' `bundle install` followed by `rake db:setup` will set you straight on the path to 
+
+# Testimonials
+
+> Our annual revenue skyrocketed by 311% within 1 month of using HACKATRON!
+~ Google
+
+> My laundry is an order of magnitude cleaner, since I've started using Hackatron!!!
+~ Jessica
+
+> Too bad I didn't invest in it when I had the chance! 
+~ Warren Buffet
+
+> Da BOMB!
+~ Jay-Z
+
+> 'Tis one cool app. I use it daily.
+~ Aristotle
