@@ -1,7 +1,7 @@
-=form_tag do
-  =select_tag :language_id, options_from_collection_for_select(Language.all, "id", "name",params[:language_id]), class:'form-control'
-  =text_field_tag :distance, params[:distance] || '5',class:'form-control'
-  =text_field_tag :address,params[:address] || request.location.address, class:'form-control'
+=form_for(@search_form,url:home_path) do |f|
+  =f.collection_select(:language_id, Language.all, :id, :name, {include_blank:true}, prompt: false, class: "form-control", include_blank:true)
+  =f.text_field :radius, class:'form-control'
+  =f.text_field :address, class:'form-control'
   =submit_tag 'Search'
 
 
